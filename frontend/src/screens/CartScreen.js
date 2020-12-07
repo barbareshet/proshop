@@ -19,7 +19,7 @@ const CartScreen = ({ match, location, history }) => {
 
     const qty = location.search ? Number(location.search.split('=')[1]) : 1;//will bring the qty of items added to cart or 1 by default
 
-    console.log(location.search);
+    // console.log(location.search);
     const dispatch = useDispatch();
 
     const cart = useSelector( state => state.cart )

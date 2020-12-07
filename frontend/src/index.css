@@ -15,3 +15,12 @@ h3{
 .rating span{
     margin: 0.1rem;
 }
+.navbar-nav a{
+    position: relative;
+}
+.navbar-nav a .badge{
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border-radius: 50%;
+}
