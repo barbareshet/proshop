@@ -1,14 +1,17 @@
 import express from 'express';
 import dotenv from 'dotenv';
-
+import path from "path";
 import connectDB from './config/db.js';
+
 // import products from './data/products.js';
 import productRoutes from './routes/productRouts.js';
+import userRoutes from './routes/userRouts.js';
+
 import {notFound, errorHandler } from "./middleware/errorMiddleware.js";
-import path from "path";
-// import { connect } from "mongoose";
+
 const app = express();
 
+app.use(express.json());
 
 
 dotenv.config();
@@ -30,6 +33,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/api/products', productRoutes )
+app.use('/api/users', userRoutes )
 
 app.use(notFound)
 app.use(errorHandler)
