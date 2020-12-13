@@ -71,6 +71,30 @@ const products = [
     rating: 4,
     numReviews: 12,
   },
+  {
+    name: 'Robot Vintage Toy',
+    image: '/images/robot-vintage-toy-isolated-on-white-PNUCTQ7.jpg',
+    description:
+        'Vintage Toy',
+    brand: 'Robot',
+    category: 'Toys',
+    price: 129.99,
+    countInStock: 0,
+    rating: 4,
+    numReviews: 12,
+  },
+  {
+    name: 'Red Robot Toy',
+    image: '/images/toy-robot-P5QUT7B.jpg',
+    description:
+        'Red Robot Toy',
+    brand: 'Robot',
+    category: 'Toys',
+    price: 119.99,
+    countInStock: 0,
+    rating: 3,
+    numReviews: 12,
+  },
 ]
 
 export default products

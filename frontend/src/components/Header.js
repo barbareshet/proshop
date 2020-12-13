@@ -7,7 +7,6 @@ const Header = () =>{
     const { cartItems } = cart;
     return (
         <header>
-
             <Navbar bg="dark" variant="dark" expand="sm" collapseOnSelect>
                 <Container>
                     <LinkContainer to="/">
