@@ -95,6 +95,18 @@ const products = [
     rating: 3,
     numReviews: 12,
   },
+  {
+    name: 'Blue Vintage Robot',
+    image: '/images/rock-n-roll-monkeyh.jpg',
+    description:
+        'Blue Vintage Robot',
+    brand: 'Robot',
+    category: 'Toys',
+    price: 129.99,
+    countInStock: 5,
+    rating: 4,
+    numReviews: 12,
+  },
 ]
 
 export default products
