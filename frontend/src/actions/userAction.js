@@ -95,16 +95,12 @@ export const getUserDetails = (id) => async (dispatch, getState) =>{
         dispatch({
             type: USER_DETAILS_REQUEST
         })
-        const { userLogin: { userinfo} } = getState();
-        const config = {
-            headers: {
-                Authorization: `Bearer ${userinfo.token}`
-            },
-        }
-        const { data } = await axios.post(
-            `/api/users/${id}`,
-            config
-        );
+        const {
+            userLogin: { userInfo },
+        } = getState();
+
+        const config = { headers: { Authorization: `Bearer ${userInfo.token}`, }, }
+        const { data } = await axios.get(`/api/users/${id}`, config );
 
         dispatch({
             type: USER_DETAILS_SUCCESS,

@@ -8,7 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { getUserDetails,  } from "../actions/userAction";
+import { getUserDetails } from "../actions/userAction";
 
 const ProfileScreen = ({location, history}) => {
     const [name, setName] = useState('');
@@ -21,10 +21,10 @@ const ProfileScreen = ({location, history}) => {
     const dispatch = useDispatch();
     const userDetails = useSelector( (state) => state.userDetails );
     const { loading, error, user } = userDetails;
-
+    // console.log(userDetails);
     const userLogin = useSelector( (state) => state.userLogin );
     const { userInfo } = userLogin;
-    console.log(user);
+    console.log(userInfo);
     useEffect( ()=>{
         if ( !userInfo ){
             history.push('/login')
@@ -32,7 +32,7 @@ const ProfileScreen = ({location, history}) => {
             if (!user || !user.name){
                 dispatch( getUserDetails('profile'))
             } else {
-                console.log(userInfo);
+                // console.log(userInfo);
                 setName(user.name);
                 setEmail(user.email)
             }
