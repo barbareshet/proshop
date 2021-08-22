@@ -8,7 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { getUserDetails } from "../actions/userAction";
+import { getUserDetails, updateUserProfile } from "../actions/userAction";
 
 const ProfileScreen = ({location, history}) => {
     const [name, setName] = useState('');
@@ -16,6 +16,7 @@ const ProfileScreen = ({location, history}) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState(null);
+    const [successMessage, setSuccessMessage] = useState(null);
 
 
     const dispatch = useDispatch();
@@ -24,7 +25,12 @@ const ProfileScreen = ({location, history}) => {
     // console.log(userDetails);
     const userLogin = useSelector( (state) => state.userLogin );
     const { userInfo } = userLogin;
-    console.log(userInfo);
+
+    const userUpdateProfile = useSelector( (state) => state.userUpdateProfile );
+    const { success } = userUpdateProfile;
+
+
+    // console.log(userInfo);
     useEffect( ()=>{
         if ( !userInfo ){
             history.push('/login')
@@ -40,12 +46,14 @@ const ProfileScreen = ({location, history}) => {
     }, [dispatch, history, userInfo, user]);
     const submitHandler = (e)=> {
         e.preventDefault();
+        // console.log(e);
         // Dispatch Profile
         if ( password !== confirmPassword ){
             setMessage('Passwords do not match')
         } else {
            //Dispatch update profile
-
+            dispatch(updateUserProfile({id:user._id, name, email, password }))
+            setSuccessMessage('Profile Update Successfully');
         }
     }
     return (
@@ -54,6 +62,7 @@ const ProfileScreen = ({location, history}) => {
                 <h2>Profile</h2>
                 {message && <Message varient="danger">{message}</Message>}
                 {error && <Message varient="danger">{error}</Message>}
+                {success && <Message varient="success">{successMessage}</Message>}
                 {loading && <Loader/>}
                 <Form onSubmit={submitHandler}>
                     <Form.Group controlId="name">
